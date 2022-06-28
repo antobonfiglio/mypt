@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  name         String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  username     String    @unique
+  passwordHash String
+  roles        Role[]
+  workouts     Workout[]
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String
+  users User[]
+}
+
+model Workout {
+  id             Int             @id @default(autoincrement())
+  createdAt      DateTime        @default(now())
+  name           String
+  description    String?
+  creatorId      String
+  creator        User            @relation(fields: [creatorId], references: [id])
+  days           DayOfWeek[]
+  excercises     ExcercisePlan[]
+  nutritionPlans NutritionPlan[]
+}
+
+model MuscleGroup {
+  id         Int         @id @default(autoincrement())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  name       String
+  excercises Excercise[]
+}
+
+model Excercise {
+  id             Int             @id @default(autoincrement())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  name           String
+  description    String?
+  videos         Video[]
+  muscleGroup    MuscleGroup     @relation(fields: [muscleGroupId], references: [id])
+  muscleGroupId  Int
+  images         Image[]
+  excercisePlans ExcercisePlan[]
+}
+
+model ExcercisePlan {
+  id           Int       @id @default(autoincrement())
+  createdAt    DateTime  @default(now())
+  Workout      Workout?  @relation(fields: [workoutId], references: [id])
+  workoutId    Int?
+  excercise    Excercise @relation(fields: [excerciseId], references: [id])
+  excerciseId  Int
+  weight       Int
+  weightFormat Int
+  reps         Int
+  sets         Int
+  userId       String
+}
+
+model Image {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  excercise   Excercise? @relation(fields: [excerciseId], references: [id])
+  excerciseId Int?
+  url         String
+}
+
+model Video {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  excercise   Excercise? @relation(fields: [excerciseId], references: [id])
+  excerciseId Int?
+  url         String
+}
+
+model NutritionPlan {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  workouts  Workout[]
+}
+
+model DayOfWeek {
+  id       Int       @id @default(autoincrement())
+  day      Int
+  workouts Workout[]
+}
