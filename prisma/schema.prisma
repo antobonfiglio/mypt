@@ -67,10 +67,10 @@ model ExcercisePlan {
   workoutId    Int?
   excercise    Excercise @relation(fields: [excerciseId], references: [id])
   excerciseId  Int
-  weight       Int
-  weightFormat Int
-  reps         Int
-  sets         Int
+  weight       String
+  weightFormat String
+  reps         String
+  sets         String
   userId       String
 }
 
