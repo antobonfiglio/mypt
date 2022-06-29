@@ -22,7 +22,7 @@ export default function ExcercixesIndexRoute() {
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div className="relative mx-auto max-w-6xl text-left">
+    <>
       <p>What muscle do you want to train?</p>
       <div className="grid justify-center pt-4">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -35,6 +35,6 @@ export default function ExcercixesIndexRoute() {
           ))}
         </ul>
       </div>
-    </div>
+      </>
   );
 }

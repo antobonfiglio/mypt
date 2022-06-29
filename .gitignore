@@ -5,5 +5,5 @@ node_modules
 /public/build
 .env
 
-/app/tailwind.css
 /postgres-data
+app/styles/tailwind.css

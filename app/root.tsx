@@ -53,8 +53,10 @@ export default function App() {
       <body>
         <Navbar user={data.user} />
         <main>
-          <div className="relative mx-[10vw] text-center">
+          <div className="relative mx-[10vw]">
+             <div className="mx-auto max-w-6xl text-left">
             <Outlet />
+            </div>
           </div>
         </main>
         <Footer />
