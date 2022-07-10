@@ -27,11 +27,12 @@ export const action: ActionFunction = async ({ request, params }) => {
     },
   });
 
+  const muscleGroupId = muscleGroup ? muscleGroup.id : 0;
   await db.excercise.create({
     data: {
       name,
       description,
-      muscleGroupId: muscleGroup?.id,
+      muscleGroupId: muscleGroupId,
     },
   });
 

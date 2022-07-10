@@ -34,7 +34,6 @@ model Workout {
   description    String?
   creatorId      String
   creator        User            @relation(fields: [creatorId], references: [id])
-  days           DayOfWeek[]
   excercises     ExcercisePlan[]
   nutritionPlans NutritionPlan[]
 }
@@ -72,6 +71,8 @@ model ExcercisePlan {
   reps         String
   sets         String
   userId       String
+  dayOfWeekId  Int
+  dayOfWeek    DayOfWeek @relation(fields: [dayOfWeekId], references: [id])
 }
 
 model Image {
@@ -99,5 +100,5 @@ model NutritionPlan {
 model DayOfWeek {
   id       Int       @id @default(autoincrement())
   day      Int
-  workouts Workout[]
+  excercisePlans ExcercisePlan[]
 }
