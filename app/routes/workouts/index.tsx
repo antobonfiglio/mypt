@@ -24,7 +24,7 @@ export default function WorkoutIndexRoute() {
     <>
       <div className="flex justify-between">
         <p> Pick a workout or create your own </p>
-        <Link to={`/workouts/new`}>Add New +</Link>
+        <Link to={`/workouts/new`}>Create new +</Link>
       </div>
       <div className="grid justify-center pt-4">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
