@@ -1,8 +1,14 @@
-import type { ActionFunction } from "@remix-run/node";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { Link, useParams } from "@remix-run/react";
 
 import { db } from "~/utils/db.server";
+import { requireUserId } from "~/utils/session.server";
+
+export const loader: LoaderFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  return null;
+};
 
 export const action: ActionFunction = async ({ request, params }) => {
   const { muscleName } = params;
@@ -42,7 +48,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 export default function NewExcerciseRoute() {
   const { muscleName } = useParams();
   return (
-    <div className="flex flex-col w-[100%]">
+    <div className="flex m-auto flex-col w-full">
       <div className="flex justify-between pb-8">
         <h1>
           <Link to={"/excercises"}>Excercises</Link>

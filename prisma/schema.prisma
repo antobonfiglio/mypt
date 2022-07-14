@@ -34,6 +34,10 @@ model Workout {
   description    String?
   creatorId      String
   creator        User            @relation(fields: [creatorId], references: [id])
+  level          String
+  type           String?
+  goal           String?
+  duration       String?
   excercises     ExcercisePlan[]
   nutritionPlans NutritionPlan[]
 }

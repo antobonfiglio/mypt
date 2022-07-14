@@ -1,5 +1,6 @@
 import { Link, useLocation } from "@remix-run/react";
 import clsx from "clsx";
+import Logo from "./logo";
 
 const LINKS = [
   { name: "Workouts", to: "/workouts" },
@@ -18,13 +19,16 @@ type NavProps = {
 export function Navbar(props: NavProps) {
   const user = props.user;
   return (
-    <div className="px-[5vw] py-9 lg:py-12">
-      <nav className="mx-auto flex max-w-7xl items-baseline justify-between">
-        <div className="flex items-baseline align-middle">
-          <Link to={"/"}>
-            <h2 className="pr-24 text-4xl">MyPT</h2>
+    <div className="px-[2vw] py-9 lg:py-12">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between">
+        <div className="flex items-center">
+          <Link to={"/"} className="flex items-center">
+            <Logo className="h-[48px] w-[48px]" />
+            <h2 className="pr-24 text-3xl md:text-4xl">
+              MyPT  
+            </h2>
           </Link>
-          <ul className="grid-cols-4 gap-8 md:grid hidden">
+          <ul className="grid-cols-4 gap-8 md:grid hidden text-center">
             {LINKS.map((link, index) => (
               <NavLink key={index} to={link.to}>
                 {link.name}
@@ -34,9 +38,11 @@ export function Navbar(props: NavProps) {
         </div>
         {user ? (
           <div className="flex items-baseline">
-            <span>{`Hi ${user.username}`}</span>
+            Hi&nbsp;
+            <span className="hidden md:block first-letter:uppercase">{`${user.username}`}</span>
+            !
             <form action="/logout" method="post" className="pl-4">
-              <button type="submit" className="button-primary">
+              <button type="submit" className="button">
                 Logout
               </button>
             </form>
@@ -44,11 +50,7 @@ export function Navbar(props: NavProps) {
         ) : (
           <div>
             <Link to={"/login"}>
-              <button className="button-primary">Login</button>
-            </Link>
-            &nbsp;
-            <Link to={"/signup"}>
-              <button className="button-primary">Sign up</button>
+              <button className="button">Sign In</button>
             </Link>
           </div>
         )}

@@ -1,3 +1,3 @@
 export default function NutritionIndexRoute() {
-  return <div>Nutrition</div>;
+  return <div className="layout-container">Nutrition</div>;
 }

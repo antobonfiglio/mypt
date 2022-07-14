@@ -1,3 +1,3 @@
 export default function PtIndexRoute() {
-  return <div>Pt</div>;
+  return <div className="layout-container">Pt</div>;
 }

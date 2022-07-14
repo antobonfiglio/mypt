@@ -111,7 +111,7 @@ export default function NewWorkoutRoute() {
   };
 
   return (
-    <>
+    <div className="relative m-auto max-w-6xl">
       <h1>New Workout</h1>
       <form
         method="post"
@@ -157,6 +157,6 @@ export default function NewWorkoutRoute() {
         </div>
         <button className="button-primary">Save</button>
       </form>
-    </>
+    </div>
   );
 }

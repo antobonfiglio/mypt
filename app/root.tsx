@@ -50,14 +50,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-gray-100">
         <Navbar user={data.user} />
         <main>
-          <div className="relative mx-[10vw]">
-             <div className="mx-auto max-w-6xl text-left">
             <Outlet />
-            </div>
-          </div>
         </main>
         <Footer />
         <ScrollRestoration />

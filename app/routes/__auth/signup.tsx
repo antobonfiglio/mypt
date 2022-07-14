@@ -1,3 +1,3 @@
 export default function signupRoute() {
-  return <div>Signup</div>;
+  return <div className="layout-container">Signup</div>;
 }

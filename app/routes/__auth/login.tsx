@@ -16,7 +16,7 @@ function validatePassword(password: unknown) {
 }
 
 function validateUrl(url: any) {
-  let urls = ["/", "/excercises", "/workouts"];
+  let urls = ["/", "/excercises", "/workouts", "/workouts/new", "/nutrition","/pt", "/excercises/new"];
   if (urls.includes(url)) {
     return url;
   }
@@ -41,7 +41,7 @@ export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
   const username = form.get("username");
   const password = form.get("password");
-  const redirectTo = validateUrl(form.get("redirectTo") || "/jokes");
+  const redirectTo = validateUrl(form.get("redirectTo") || "/workouts");
   if (
     typeof username !== "string" ||
     typeof password !== "string" ||
@@ -61,7 +61,7 @@ export const action: ActionFunction = async ({ request }) => {
     return badRequest({ fieldErrors, fields });
 
   const user = await login({ username, password });
-  console.log({ user });
+  
   if (!user) {
     return badRequest({
       fields,
@@ -81,7 +81,7 @@ export default function Login() {
   // };
 
   return (
-    <div className="flex flex-col pt-4" data-light="">
+    <div className="layout-container">
       <form
         method="post"
         className="grid grid-cols-1 gap-4 mx-auto justify-items-center"
