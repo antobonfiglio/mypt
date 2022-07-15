@@ -17,6 +17,7 @@ import { getUser } from "~/utils/session.server";
 import { Navbar } from "./components/navbar";
 
 import styles from "./styles/tailwind.css";
+import Logo from "./components/logo";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];
@@ -50,10 +51,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gray-100">
+      <body className="bg-gray-100 flex flex-col min-h-screen">
         <Navbar user={data.user} />
         <main>
-            <Outlet />
+          <Outlet />
         </main>
         <Footer />
         <ScrollRestoration />
@@ -66,10 +67,13 @@ export default function App() {
 
 export function Footer() {
   return (
-    <footer className="pb-16 pt-48">
-      <div className="relative mx-[10vw] text-center">
-        <strong>MyPT</strong> Copyright 2022
-      </div>
-    </footer>
+    <div className="mt-auto">
+      <footer className="mt-10 py-16 bg-black text-gray-300">
+        <div className="relative mx-auto flex items-center justify-center">
+          <Logo className="h-[48px] w-[48px] fill-gray-300" />
+          <strong>MyPT</strong> &copy;2022
+        </div>
+      </footer>
+    </div>
   );
 }

@@ -60,8 +60,17 @@ export const action: ActionFunction = async ({ request, params }) => {
       let selectedExcercise = selectedExcercises.find(
         (exc) => exc.excerciseId === excerciseId && exc.dayOfWeekId === dayId
       );
+
       if (selectedExcercise) {
-        selectedExcercises = [...selectedExcercises, newExcercise];
+        const sets = selectedExcercise.sets || value.toString();
+        const reps = selectedExcercise.reps || value.toString();
+        const excercise = { ...selectedExcercise, sets, reps };
+        selectedExcercises = [
+          ...selectedExcercises.filter(
+            (e) => e.excerciseId != selectedExcercise?.excerciseId
+          ),
+          excercise,
+        ];
       } else {
         selectedExcercises.push(newExcercise);
       }

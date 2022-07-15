@@ -12,3 +12,18 @@ export const daysOfWeek: Array<DayOfWeek> = [
   { id: "5", label: "Fri" },
   { id: "6", label: "Sat" },
 ];
+
+export function getDay(dayId: string) {
+  return daysOfWeek.find((d) => d.id === dayId)?.label;
+}
+
+export function groupBy(objectArray: Array<any>, property: string) {
+  return objectArray.reduce(function (acc, obj) {
+    let key = obj[property];
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(obj);
+    return acc;
+  }, {});
+}
