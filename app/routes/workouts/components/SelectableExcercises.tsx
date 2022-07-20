@@ -46,12 +46,16 @@ export default function SelectableExcercises(
 
   return (
     <>
-      <div className="md:col-span-4 w-[100%] text-lg">
-        <span onClick={props.onMuscleGroupClick} className="cursor-pointer">
-          Muscle Groups
-        </span>{" "}
-        &gt;
-        <span>{props.muscleGroup?.name}</span>
+      <div className="md:col-span-4 w-[100%] pb-2">
+        <div className="flex w-full">
+          <h3
+            onClick={props.onMuscleGroupClick}
+            className="cursor-pointer pr-2"
+          >
+            &larr;
+          </h3>
+          <h3>{props.muscleGroup?.name}</h3>
+        </div>
       </div>
       {fetcher.state === "loading" && <div>loading excercises ...</div>}
       {fetcher.type === "done" &&
@@ -59,18 +63,24 @@ export default function SelectableExcercises(
           const selected = selectedExcercises.find(
             (ex) => ex.id === excercise.id
           )
-            ? "border-gray-800"
-            : "";
+            ? "bg-black text-gray-100"
+            : "bg-gray-200";
           return (
             <div
               key={`muscleGroup_${index}`}
-              className={`h-40 w-40 border-2 ${selected}`}
+              className={`${selected} h-48 w-48 cursor-pointer hover:bg-black text-gray-700  hover:text-gray-100 rounded-sm flex flex-col items-center justify-between`}
               onClick={() => addSelectedExcercise(excercise)}
             >
-              {excercise.name}
+              <div className="mt-4 h-28 w-28 bg-white rounded-full shadow-sm"></div>
+              <div className="mb-4 px-2 text-sm text-center">{excercise.name.toUpperCase()}</div>
             </div>
           );
         })}
+      {fetcher.type === "done" && (!excercises || excercises.length === 0) && (
+        <div className="md:col-span-4 w-[100%] pb-2 text-center">
+          <p>No excercise found</p>
+        </div>
+      )}
     </>
   );
 }

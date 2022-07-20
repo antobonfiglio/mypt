@@ -45,12 +45,12 @@ export default function ExcercisesByMuscleGroupRoute() {
         <div className="grid grid-cols-1 md:grid-cols-2 w-[100%] gap-4 mb-24 h-auto items-center">
           {/* <!-- hero punchline --> */}
           <div className="flex flex-col items-start">
-            <Link to={"/excercises"} className="py-2 text-gray-500 text-2xl">
+            <Link to={"/excercises"} className="text-xl font-semibold pb-2">
               Excercises
             </Link>
             <h2 className="capitalize">{muscleName}</h2>
 
-            <h4>Choose an excercise from the list or create a new one.</h4>
+            <p>Choose an excercise from the list or create a new one</p>
             <Link to={`/excercises/${muscleName}/new`} className="pt-6">
               <button className="button-primary">New Excercixe</button>
             </Link>

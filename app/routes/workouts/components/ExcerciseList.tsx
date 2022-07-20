@@ -40,7 +40,7 @@ export default function ExcerciseList(props: ExcerciseListProps): JSX.Element {
       <div className="flex justify-between">
         {props.day.label}
         <div onClick={changeModalState} className="button flex justify-center items-center">
-          Add excercise +
+          Add excercise
         </div>
       </div>
       {

@@ -17,6 +17,9 @@ async function seed() {
           {
             name: "user.base",
           },
+          {
+            name: "user.pt",
+          },
         ],
       },
     },
@@ -28,6 +31,7 @@ async function seed() {
           name: workout.name,
           creatorId: user.id,
           description: workout.description!,
+          level:'beginner'
         },
       });
     }),

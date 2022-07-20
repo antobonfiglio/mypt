@@ -42,22 +42,23 @@ export default function ExcerciseRoute() {
         <div className="grid grid-cols-1 md:grid-cols-2 w-[100%] gap-4 mb-24 h-auto items-center">
           {/* <!-- hero punchline --> */}
           <div className="flex flex-col items-start">
-            <div className="text-xl font-semibold">
-              <Link to={"/excercises"} className="underline pr-2">
+            <div>
+              <Link
+                to={"/excercises"}
+                className="text-xl font-semibold pb-2 pr-2"
+              >
                 Excercises
               </Link>
-              &gt;
+              <span className="font-semibold text-gray-600">&gt;</span>
               <Link
                 to={`/excercises/${muscleName}`}
-                className="capitalize pl-2 underline"
+                className="text-xl font-semibold pb-2 capitalize pl-2"
               >
                 {muscleName}
               </Link>
             </div>
             <h2>{data.name}</h2>
-            <p className="pt-4">
-              {data.description}
-            </p>
+            <p className="pt-4">{data.description}</p>
           </div>
           {/* <!-- hero image --> */}
           <figure className="relative">

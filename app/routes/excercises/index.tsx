@@ -32,7 +32,7 @@ export default function ExcercixesIndexRoute() {
               Excercise Catalogue
               {/* <text className="font-extrabold">best version</text> of yourself */}
             </h2>
-            <h4>Which muscle group do you want to train?</h4>
+            <p>Choose the muscle you want to train</p>
           </div>
           {/* <!-- hero image --> */}
           <figure className="relative">

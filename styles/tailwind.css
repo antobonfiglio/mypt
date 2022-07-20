@@ -13,25 +13,28 @@
     @apply text-2xl md:text-4xl;
   }
   h4 {
-    @apply text-lg md:text-2xl;
+    @apply text-xl md:text-2xl;
   }
   p {
-    @apply text-gray-700 py-2 text-lg;
+    @apply text-gray-800 py-2 text-base md:text-xl font-light;
+  }
+  a{
+    @apply text-gray-600 hover:text-black
   }
 }
 
 @layer components{
 
   .button {
-    @apply h-[50px] w-[140px] bg-gray-100 cursor-pointer border-gray-700 border-2 rounded-sm hover:drop-shadow-none;
+    @apply h-[50px] w-[140px] bg-gray-100 cursor-pointer border-gray-300 border-2 rounded-sm hover:border-gray-700 hover:drop-shadow-none;
   }
   
   .button-primary {
-    @apply h-[50px] w-[140px] bg-gray-900 text-white rounded-sm border drop-shadow-md hover:drop-shadow-sm;
+    @apply h-[50px] w-[140px] bg-gray-900 text-white rounded-sm hover:shadow-lg hover:shadow-gray-400 hover:text-lime-400;
   }
 
   .layout-container{
-    @apply relative m-auto max-w-6xl pl-4 pr-4
+    @apply relative m-auto max-w-7xl px-2 md:px-4
   }
   
 }

@@ -31,7 +31,7 @@ export default function IndexRoute() {
               Start building the{" "}
               <text className="font-extrabold">best version</text> of yourself
             </h2>
-            <h4>
+            <h4 className="py-4">
               <b>Healthier. Stronger. Happier.</b>
             </h4>
             <Link to={"/signup"} className="pt-6">
@@ -58,17 +58,17 @@ export default function IndexRoute() {
         <p>
           Pick a workout that best satisfies your goals. Track your progress and keep pushing!
         </p>
-        <ul className="flex mt-16 p-2 overflow-x-scroll no-scrollbar">
+        <ul className="flex h-96 mt-16 p-2 overflow-x-scroll no-scrollbar">
           {data.workouts.map((workout, index) => (
             <Link key={index} to={`/workouts/${workout.name.toLowerCase()}`}>
               <li
                 key={workout.id}
-                className="relative overflow-hidden h-60 w-80 border-1 p-4 border-black rounded-md bg-gray-800 text-white hover:text-lime-400 ml-4"
+                className="relative overflow-hidden h-60 w-80 border-1 p-4 rounded-md bg-gray-800 text-white shadow-lg ml-4 hover:text-lime-400 hover:shadow-lg hover:shadow-gray-400 "
               >
-                <div className="absolute bottom-[-210px] md:opacity-30 text-[450px] text-gray-600">
+                <div className="absolute bottom-[-210px] md:opacity-30 text-[450px] text-gray-500">
                   W
                 </div>
-                <span className="absolute z-1 left-0 bottom-0 p-4 text-2xl text-left">
+                <span className="absolute z-1 left-0 top-0 p-4 text-2xl text-left">
                   {workout.name}
                 </span>
               </li>

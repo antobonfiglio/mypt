@@ -38,6 +38,7 @@ model Workout {
   type           String?
   goal           String?
   duration       String?
+  equipment      String?
   excercises     ExcercisePlan[]
   nutritionPlans NutritionPlan[]
 }

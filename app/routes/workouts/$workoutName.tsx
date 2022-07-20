@@ -73,13 +73,13 @@ export default function WorkoutRoute() {
           <div className="flex flex-col items-start">
             <Link
               to={"/workouts"}
-              className="text-xl font-semibold text-gray-600 pb-2"
+              className="text-xl font-semibold pb-2"
             >
               Workouts
             </Link>
             <h2>{data.name}</h2>
             <div className="flex items-center text-gray-700">
-              <div className="h-10 w-10 rounded-full bg-black my-4 mr-2"></div>
+              <div className="h-10 w-10 rounded-full bg-gray-300 border-black border-2 my-4 mr-2"></div>
               <div className="flex flex-col">
                 <div>
                   Created by
@@ -125,7 +125,7 @@ export default function WorkoutRoute() {
         </div>
       </header>
       <div className="layout-container">
-        <h3 className="py-4">THE PLAN</h3>
+        <h3>THE PLAN</h3>
         {Object.keys(groupedExcercises).map((dayId) => {
           const excercises: Array<any> = groupedExcercises[dayId];
           const muscleGroups: Array<string> = excercises.reduce(
@@ -156,10 +156,18 @@ export default function WorkoutRoute() {
                       let style = !isEven
                         ? "bg-gray-300 py-4"
                         : "bg-gray-200 py-4";
+
+                      let excerciseLink = (
+                        <Link
+                          to={`/excercises/${excercisePlan.excercise.muscleGroup.name}/${excercisePlan.excercise.name}`}
+                        >
+                          {excercisePlan.excercise.name}
+                        </Link>
+                      );
                       return (
                         <ExcerciseListItem
                           key={`excercise_${index}`}
-                          name={excercisePlan.excercise.name}
+                          excerciseLink={excerciseLink}
                           reps={excercisePlan.reps}
                           sets={excercisePlan.sets}
                           style={style}
@@ -178,7 +186,7 @@ export default function WorkoutRoute() {
 }
 
 type ExcerciseListItemProp = {
-  name: string;
+  excerciseLink: JSX.Element;
   sets: string;
   reps: string;
   style: string;
@@ -187,7 +195,7 @@ type ExcerciseListItemProp = {
 function ExcerciseListItem(props: ExcerciseListItemProp) {
   return (
     <>
-      <li className={`px-4 ${props.style}`}>{props.name}</li>
+      <li className={`px-4 ${props.style}`}>{props.excerciseLink}</li>
       <li className={props.style}>{props.sets}</li>
       <li className={props.style}>{props.reps}</li>
     </>

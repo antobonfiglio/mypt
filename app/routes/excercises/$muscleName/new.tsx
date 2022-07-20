@@ -48,17 +48,15 @@ export const action: ActionFunction = async ({ request, params }) => {
 export default function NewExcerciseRoute() {
   const { muscleName } = useParams();
   return (
-    <div className="flex m-auto flex-col w-full">
-      <div className="flex justify-between pb-8">
-        <h1>
-          <Link to={"/excercises"}>Excercises</Link>
-          &gt;
-          <Link to={`/excercises/${muscleName}`}>{muscleName}</Link>
-          &gt; New excercise
-        </h1>
+    <div>
+      <div className="text-xl font-semibold pb-4 grid grid-flow-col w-2/5">
+        <Link to={"/excercises"}>Excercises</Link>
+        <span className="text-gray-500">&gt;</span>
+        <Link to={`/excercises/${muscleName}`} className="capitalize">{muscleName}</Link>
+        <span className="text-gray-500">&gt;</span>
+        <span>New excercise</span>
       </div>
-      <div className="grid gap-4 justify-center">
-        <p>Add your own excercise</p>
+      <div className="grid grid-cols-1 gap-4 justify-center">
         <form method="post" className="grid gap-4">
           <div className="grid gap-4">
             <label>Name:</label>
@@ -66,10 +64,11 @@ export default function NewExcerciseRoute() {
             <label>Description:</label>
             <textarea name="description" rows={5} />
           </div>
-
-          <button type="submit" className="button-primary">
-            Add
-          </button>
+          <div className="w-full text-right">
+            <button type="submit" className="button-primary">
+              Add
+            </button>
+          </div>
         </form>
       </div>
     </div>

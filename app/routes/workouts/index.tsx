@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
      workouts: await db.workout.findMany({
        take: 30,
        select: { id: true, name: true },
-       orderBy: { name: "desc" },
+       orderBy: { createdAt: "desc" },
      }),
    };
    return json(data);
@@ -31,7 +31,7 @@ export default function WorkoutIndexRoute() {
               Workout Routines
               {/* <text className="font-extrabold">best version</text> of yourself */}
             </h2>
-            <h4>Choose a workout from the list or create a new one.</h4>
+            <p>Choose a workout from the list or create a <span className="font-extrabold">new one</span></p>
             <Link to={"/workouts/new"} className="pt-6">
               <button className="button-primary">New Workout</button>
             </Link>

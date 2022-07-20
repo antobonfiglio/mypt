@@ -27,3 +27,13 @@ export function groupBy(objectArray: Array<any>, property: string) {
     return acc;
   }, {});
 }
+
+export type TrainingLevel = {
+  value:string;
+}
+
+export const trainingLevel: Array<TrainingLevel> = [
+  { value: "Beginner" },
+  { value: "Intermediate" },
+  { value: "Advanced" },
+];
